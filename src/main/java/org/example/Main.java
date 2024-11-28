@@ -23,11 +23,12 @@ public class Main {
                 System.out.print("Ingrese el símbolo de la acción (ejemplo: AAPL): ");
                 String symbol = scanner.next();
 
+                // Obtener la cotización desde el archivo
                 Stock stock = stockManager.getStockQuote(symbol);
                 if (stock != null) {
                     System.out.println("Cotización actual: " + stock);
                 } else {
-                    System.out.println("Error al obtener los datos de la acción.");
+                    System.out.println("Error: No se encontró la acción con el símbolo " + symbol);
                 }
             } else {
                 System.out.println("Opción no válida. Intente nuevamente.");
@@ -37,5 +38,4 @@ public class Main {
         scanner.close();
     }
 }
-
 
