@@ -5,9 +5,9 @@ import java.nio.file.*;
 import java.util.*;
 
 public class StockManager {
-    private StockProvider stockProvider;  // Ahora se utiliza StockProvider
+    private StockProvider stockProvider;
 
-    // Constructor que acepta un StockProvider
+
     public StockManager(StockProvider stockProvider) {
         this.stockProvider = stockProvider;
     }
@@ -15,7 +15,6 @@ public class StockManager {
     // Método para agregar cotización de una acción
     public void addStockQuote(String symbol, double price, String currency) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Usuario.PC-INF-PRUEBA\\IdeaProjects\\TpFinal\\src\\acciones", true))) {
-            // Usar StockFactory para crear una instancia de Stock
             Stock stock = StockFactory.createStock(symbol, price, currency);
             writer.write(stock.getSymbol() + "," + stock.getPrice() + "," + stock.getCurrency() + "\n");
             System.out.println("Cotización agregada correctamente.");
@@ -24,12 +23,10 @@ public class StockManager {
         }
     }
 
-    // Método para obtener la cotización de una acción desde el archivo
     public Stock getStockQuote(String symbol) {
-        return stockProvider.getStockQuote(symbol);  // Usar el StockProvider para obtener la cotización
+        return stockProvider.getStockQuote(symbol);
     }
 
-    // Método para actualizar una cotización
     public void updateStockQuote(String symbol, double price) {
         try {
             List<String> lines = Files.readAllLines(Paths.get("C:\\Users\\Usuario.PC-INF-PRUEBA\\IdeaProjects\\TpFinal\\src\\acciones"));
@@ -55,7 +52,6 @@ public class StockManager {
         }
     }
 
-    // Método para eliminar una cotización
     public void deleteStockQuote(String symbol) {
         try {
             List<String> lines = Files.readAllLines(Paths.get("C:\\Users\\Usuario.PC-INF-PRUEBA\\IdeaProjects\\TpFinal\\src\\acciones"));
