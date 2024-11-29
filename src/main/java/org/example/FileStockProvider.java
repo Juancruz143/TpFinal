@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FileStockProvider implements StockProvider {
-    private static final String FILE_PATH = "C:\\Users\\Usuario.PC-INF-PRUEBA\\IdeaProjects\\TpFinal\\src\\acciones";  // Ajusta esta ruta a la ubicación de tu archivo
+    private static final String FILE_PATH = "C:\\Users\\Usuario.PC-INF-PRUEBA\\IdeaProjects\\TpFinal\\src\\acciones";
 
     @Override
     public Stock getStockQuote(String symbol) {
@@ -25,7 +25,7 @@ public class FileStockProvider implements StockProvider {
         } catch (IOException e) {
             System.err.println("Error al leer el archivo de cotizaciones: " + e.getMessage());
         }
-        return null; // Retorna null si no encuentra el símbolo
+        return null;
     }
 }
 

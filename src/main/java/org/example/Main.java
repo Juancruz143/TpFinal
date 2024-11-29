@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Usamos FileStockProvider como el proveedor de cotizaciones
-        StockProvider stockProvider = new FileStockProvider(); // Proveedor de cotizaciones desde archivo
-        StockManager stockManager = new StockManager(stockProvider);  // Crear StockManager con el FileStockProvider
-        Portfolio portfolio = new Portfolio(stockManager); // Crear Portfolio pasando StockManager
+        StockProvider stockProvider = new FileStockProvider();
+        StockManager stockManager = new StockManager(stockProvider);
+        Portfolio portfolio = new Portfolio(stockManager);
 
         Scanner scanner = new Scanner(System.in);
 

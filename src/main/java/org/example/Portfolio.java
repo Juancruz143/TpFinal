@@ -5,21 +5,21 @@ import java.util.Map;
 
 public class Portfolio {
     private Map<String, Integer> stocks;
-    private StockManager stockManager;  // Agregado StockManager en la clase Portfolio
+    private StockManager stockManager;
 
-    // Constructor que acepta un StockManager
+
     public Portfolio(StockManager stockManager) {
         this.stocks = new HashMap<>();
         this.stockManager = stockManager;
     }
 
-    // Método para comprar acciones
+
     public void buyStock(String symbol, int quantity) {
         stocks.put(symbol, stocks.getOrDefault(symbol, 0) + quantity);
         System.out.println("Compraste " + quantity + " acciones de " + symbol + ".");
     }
 
-    // Método para vender acciones
+
     public void sellStock(String symbol, int quantity) {
         if (stocks.containsKey(symbol)) {
             int currentQuantity = stocks.get(symbol);
@@ -34,7 +34,7 @@ public class Portfolio {
         }
     }
 
-    // Mostrar el portafolio
+
     public void showPortfolio() {
         if (stocks.isEmpty()) {
             System.out.println("Tu portafolio está vacío.");
@@ -43,7 +43,6 @@ public class Portfolio {
             for (Map.Entry<String, Integer> entry : stocks.entrySet()) {
                 String symbol = entry.getKey();
                 int quantity = entry.getValue();
-                // Obtener la cotización actual de la acción desde StockManager
                 Stock stock = stockManager.getStockQuote(symbol);
                 if (stock != null) {
                     System.out.println("Símbolo: " + symbol + " | Cantidad: " + quantity + " | Precio: " + stock.getPrice() + " " + stock.getCurrency());
@@ -54,14 +53,12 @@ public class Portfolio {
         }
     }
 
-    // Método para verificar cuántas acciones tienes de un símbolo
     public int getStockQuantity(String symbol) {
         return stocks.getOrDefault(symbol, 0);
     }
 
-    // Método para obtener todas las acciones en el portafolio (para mostrar antes de vender)
     public Map<String, Integer> getStocks() {
-        return stocks;  // Devuelve el mapa de acciones
+        return stocks;
     }
 }
 
