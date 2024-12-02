@@ -12,7 +12,7 @@ public class StockManager {
         this.stockProvider = stockProvider;
     }
 
-    // Método para agregar cotización de una acción
+    
     public void addStockQuote(String symbol, double price, String currency) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Usuario.PC-INF-PRUEBA\\IdeaProjects\\TpFinal\\src\\acciones", true))) {
             Stock stock = StockFactory.createStock(symbol, price, currency);
